@@ -1,0 +1,19 @@
+
+{
+  "id": "1",
+  "name": "Shoshenq I",
+  "father": "2",
+  "mother": "3",
+  "spouses": [
+    "4", "5"
+  ],
+  "sources": [
+    "1"
+  ],
+  "pages": [
+    "119"
+  ],
+  "birth": null,
+  "death": "922 BC",
+  "image": "https://web.archive.org/web/20240114120119oe_/https://upload.wikimedia.org/wikipedia/commons/4/47/Shoshenq_I_by_Rosellini.jpg"
+}
