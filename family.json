@@ -70,5 +70,33 @@
   "birth": null,
   "death": null,
   "image": null
-}
+},{
+  "id": "6",
+  "name": "Shoshenq A",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "7"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "7",
+  "name": "Mehtenweskhet A",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "6"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},
 ]
