@@ -1,4 +1,3 @@
-
 {
   "id": "1",
   "name": "Shoshenq I",
@@ -10,10 +9,64 @@
   "sources": [
     "1"
   ],
-  "pages": [
-    "119"
-  ],
   "birth": null,
   "death": "922 BC",
   "image": "https://web.archive.org/web/20240114120119oe_/https://upload.wikimedia.org/wikipedia/commons/4/47/Shoshenq_I_by_Rosellini.jpg"
-}
+},
+{
+  "id": "2",
+  "name": "Nimlot A",
+  "father": "6",
+  "mother": "7",
+  "spouses": [
+    "3"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "3",
+  "name": "Tentsepeh A",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "2"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "4",
+  "name": "Karomama A",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "1"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "5",
+  "name": "Patareshnes",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "1"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},
