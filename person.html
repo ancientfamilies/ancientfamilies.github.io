@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancient Families</title>
+
+<style>
+    body {
+        font-family: Georgia, serif;
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #333;
+        line-height: 1.6;
+        background: #fff;
+    }
+
+    .person-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .person-details {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .person-image {
+        width: 25%;
+        max-width: 25%;
+        height: auto;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .detail {
+        margin: 10px 0;
+    }
+
+    .detail strong {
+        display: inline-block;
+        min-width: 90px;
+    }
+
+    a {
+        color: #315b82;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .section {
+        margin-top: 25px;
+    }
+
+    .section h2 {
+        font-size: 1.15em;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+    }
+
+    .citation {
+        margin: 10px 0;
+        padding-left: 15px;
+        text-indent: -15px;
+    }
+
+    .error {
+        color: #a22;
+        padding: 15px;
+        background: #fff0f0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            margin: 20px auto;
+        }
+
+        .person-container {
+            gap: 12px;
+        }
+
+        .person-image {
+            width: 25%;
+            max-width: 25%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="content">
+    Loading family information...
+</div>
+
+<script>
+const JSON_URL = "https://ancientfamilies.github.io/family.json";
+const SOURCES_URL = "https://ancientfamilies.github.io/sources.json";
+
+const params = new URLSearchParams(window.location.search);
+const personId = params.get("id");
+
+let family = [];
+let sources = [];
+
+// Convert JSON data into an array of records
+
+function getRecords(data) {
+    const records = [];
+    const visited = new WeakSet();
+
+    function search(obj) {
+        if (!obj || typeof obj !== "object") return;
+        if (visited.has(obj)) return;
+
+        visited.add(obj);
+
+        if (!Array.isArray(obj) && obj.id !== undefined) {
+            records.push(obj);
+            return;
+        }
+
+        if (Array.isArray(obj)) {
+            obj.forEach(search);
+        } else {
+            Object.values(obj).forEach(search);
+        }
+    }
+
+    search(data);
+    console.log("Loaded records:", records.length);
+    console.log("First records:", records.slice(0, 3));
+
+    return records;
+}
+// Find a person by ID
+
+function findPerson(id) {
+    if (id === null || id === undefined) return null;
+
+    return family.find(person =>
+        String(person.id).trim() === String(id).trim()
+    ) || null;
+}
+
+// Find a source by ID
+function findSource(id) {
+    if (id === null || id === undefined) return null;
+
+    return sources.find(source =>
+        String(source.id) === String(id)
+    ) || null;
+}
+
+// Escape HTML
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+// Create a link to another family member
+function personLink(id) {
+    const person = findPerson(id);
+
+    if (!person) {
+        return escapeHTML(String(id));
+    }
+
+    const url = "?id=" + encodeURIComponent(person.id);
+
+    return `<a href="${url}">${escapeHTML(person.name || "Unknown")}</a>`;
+}
+
+// Display a list of family members
+function memberList(ids) {
+    if (!ids || !ids.length) {
+        return "Unknown";
+    }
+
+    return ids.map(personLink).join(", ");
+}
+
+// Find and display someone's children
+function displayChildren(person) {
+    const children = family.filter(child =>
+        String(child.father).trim() === String(person.id).trim() ||
+        String(child.mother).trim() === String(person.id).trim()
+    );
+
+    if (!children.length) {
+        return "No known children.";
+    }
+
+    return children.map(child =>
+        personLink(child.id)
+    ).join(", ");
+}
+
+// Display source citations instead of source IDs
+function displayCitations(ids) {
+    if (!ids || !ids.length) {
+        return "No citations available.";
+    }
+
+    const citations = ids
+        .map(id => findSource(id))
+        .filter(source => source && source.apa)
+        .map(source =>
+            `<div class="citation">${escapeHTML(source.apa)}</div>`
+        );
+
+    return citations.length
+        ? citations.join("")
+        : "No citations available.";
+}
+
+// Display a general value
+function displayValue(value) {
+    if (value === null || value === undefined || value === "") {
+        return "Unknown";
+    }
+
+    return escapeHTML(value);
+}
+
+// Display a list of page IDs
+function displayIdList(ids) {
+    if (!ids || !ids.length) {
+        return "None";
+    }
+
+    return ids.map(id => {
+        const person = findPerson(id);
+
+        if (person) {
+            return personLink(id);
+        }
+
+        return escapeHTML(id);
+    }).join(", ");
+}
+
+// Build the person's page
+function displayPerson(person) {
+    const content = document.getElementById("content");
+
+    const image = person.image
+        ? `<img class="person-image"
+                src="${escapeHTML(person.image)}"
+                alt="${escapeHTML(person.name || "Person")}"
+                onerror="this.style.display='none'">`
+        : "";
+
+    content.innerHTML = `
+        <div class="person-container">
+
+            <div class="person-details">
+
+                <h1>${displayValue(person.name)}</h1>
+                <div class="detail">
+                    <strong>Father:</strong>
+                    ${person.father
+                        ? personLink(person.father)
+                        : "Unknown"}
+                </div>
+
+                <div class="detail">
+                    <strong>Mother:</strong>
+                    ${person.mother
+                        ? personLink(person.mother)
+                        : "Unknown"}
+                </div>
+
+                <div class="detail">
+                    <strong>Spouses:</strong>
+                    ${memberList(person.spouses)}
+                </div>
+
+                <div class="detail">
+                    <strong>Birth:</strong>
+                    ${displayValue(person.birth)}
+                </div>
+
+                <div class="detail">
+                    <strong>Death:</strong>
+                    ${displayValue(person.death)}
+                </div>
+		<div class="detail">
+   	 <strong>Children:</strong>
+   	 ${displayChildren(person)}
+		</div>
+                <div class="section">
+                    <h2>Sources</h2>
+                    ${displayCitations(person.sources)}
+                </div>
+            </div>
+
+            ${image}
+
+        </div>
+    `;
+}
+
+// Fetch both JSON files and load the requested person
+async function loadFamily() {
+    const content = document.getElementById("content");
+
+    if (!personId) {
+        content.innerHTML = `
+            <div class="error">
+                No person ID specified in the URL.
+                Try adding ?id=1 to the address.
+            </div>
+        `;
+        return;
+    }
+
+    try {
+        const [familyResponse, sourcesResponse] = await Promise.all([
+            fetch(JSON_URL),
+            fetch(SOURCES_URL)
+        ]);
+
+        if (!familyResponse.ok) {
+            throw new Error("Unable to load family.json");
+        }
+
+        if (!sourcesResponse.ok) {
+            throw new Error("Unable to load sources.json");
+        }
+
+        let familyData;
+let sourcesData;
+
+try {
+   const familyText = await familyResponse.text();
+
+console.log("RAW family.json response:");
+console.log(familyText);
+
+try {
+    familyData = JSON.parse(familyText);
+} catch (e) {
+    console.error("family.json parsing error:", e);
+    console.log("Text around the error:");
+    console.log(familyText.split("\n").slice(10, 20).join("\n"));
+    throw e;
+}
+    console.log("family.json loaded successfully");
+} catch (e) {
+    throw new Error("family.json parsing failed: " + e.message);
+}
+
+try {
+    sourcesData = await sourcesResponse.json();
+    console.log("sources.json loaded successfully");
+} catch (e) {
+    throw new Error("sources.json parsing failed: " + e.message);
+}
+
+        family = getRecords(familyData);
+        sources = getRecords(sourcesData);
+
+        const person = findPerson(personId);
+
+        if (!person) {
+            content.innerHTML = `
+                <div class="error">
+                    Person with ID ${escapeHTML(personId)}
+                    could not be found.
+                </div>
+            `;
+            return;
+        }
+
+        displayPerson(person);
+
+        document.title = person.name + " - Ancient Families";
+
+    } catch (error) {
+        console.error(error);
+
+        content.innerHTML = `
+            <div class="error">
+                Unable to load family information.
+                <br>
+                ${escapeHTML(error.message)}
+            </div>
+        `;
+    }
+}
+
+loadFamily();
+</script>
+
+</body>
+</html>
