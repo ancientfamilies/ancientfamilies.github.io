@@ -132,7 +132,7 @@
   "father": "1",
   "mother": "4",
   "spouses": [
-    "11"
+    "11","29","30"
   ],
   "sources": [
     "1"
@@ -341,6 +341,146 @@
   "name": "Nimrod B",
   "father": "1",
   "mother": "5",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "26",
+  "name": "Neskhonsupakhered i",
+  "father": "19",
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "27",
+  "name": "Djedhoriwefankh",
+  "father": "21",
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "28",
+  "name": "Osorkon [Wsỉrkn]",
+  "father": "25",
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "29",
+  "name": "Ta-sherit-en-Iset/-Isis",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "10"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "30",
+  "name": "Tashedkhonsu",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "10"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "31",
+  "name": "Shoshenq Q",
+  "father": "10",
+  "mother": "11",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": "https://web.archive.org/web/20200223150907oe_/https://upload.wikimedia.org/wikipedia/commons/e/ed/Statue_CG42194_Legrain.jpg"
+},{
+  "id": "32",
+  "name": "Sithorkhenem A",
+  "father": "10",
+  "mother": "11",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "33",
+  "name": "Smendes III (Nesbanebdjedet III)",
+  "father": "10",
+  "mother": "11",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "34",
+  "name": "Takelot I",
+  "father": "10",
+  "mother": "30",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "35",
+  "name": "Djedptahiufankh B",
+  "father": "10",
+  "mother": "29",
   "spouses": [
     null
   ],
