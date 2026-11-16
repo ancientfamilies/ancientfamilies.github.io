@@ -73,7 +73,7 @@
 },{
   "id": "6",
   "name": "Shoshenq A",
-  "father": null,
+  "father": "13",
   "mother": null,
   "spouses": [
     "7"
@@ -91,6 +91,258 @@
   "mother": null,
   "spouses": [
     "6"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "8",
+  "name": "Osorkon The Elder",
+  "father": "6",
+  "mother": "7",
+  "spouses": [
+    "9"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "9",
+  "name": "Tasha(a)'kheper",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "8"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "10",
+  "name": "Osorkon I",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    "11"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": "877 BC",
+  "image": "https://web.archive.org/web/20250715185025oe_/https://upload.wikimedia.org/wikipedia/commons/7/76/Statue_of_Pharaoh_Osorkon_I-AO_9502-P5280216-gradient.jpg"
+},{
+  "id": "11",
+  "name": "Maatkare B",
+  "father": "12",
+  "mother": null,
+  "spouses": [
+    "11"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "12",
+  "name": "Psusennes II",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "13",
+  "name": "Paihuty",
+  "father": "14",
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "14",
+  "name": "Nebneshi",
+  "father": "15",
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "15",
+  "name": "Mawasun",
+  "father": "16",
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "16",
+  "name": "Buyuwawa the Tehenu",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "17",
+  "name": "Tentsepeh B",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    "18"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "18",
+  "name": "Shedsunefertum A",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "17"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "19",
+  "name": "Iuput A",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "20",
+  "name": "Djedptahiuefankh A",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "21",
+  "name": "Djediniiuesankh A",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "22",
+  "name": "Mehtenweskhet D",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    null
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "23",
+  "name": "Tashepenbastet",
+  "father": "1",
+  "mother": "4",
+  "spouses": [
+    "24"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "24",
+  "name": "Djed-Djehuty-iuef-ankh A",
+  "father": null,
+  "mother": null,
+  "spouses": [
+    "23"
+  ],
+  "sources": [
+    "1"
+  ],
+  "birth": null,
+  "death": null,
+  "image": null
+},{
+  "id": "25",
+  "name": "Nimrod B",
+  "father": "1",
+  "mother": "5",
+  "spouses": [
+    null
   ],
   "sources": [
     "1"
