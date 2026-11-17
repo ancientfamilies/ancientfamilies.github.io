@@ -12,9 +12,9 @@
         max-width: 1100px;
         margin: 40px auto;
         padding: 0 20px;
-        color: #333;
+        color: #ccc;
         line-height: 1.6;
-        background: #fff;
+        background: #000;
     }
 
     .person-container {
@@ -68,7 +68,7 @@
 
     .section h2 {
         font-size: 1.15em;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #333;
         padding-bottom: 5px;
     }
 
@@ -198,8 +198,6 @@ function memberList(ids) {
 
     return ids.map(personLink).join(", ");
 }
-
-// Find and display someone's children
 function displayChildren(person) {
     const children = family.filter(child =>
         String(child.father).trim() === String(person.id).trim() ||
@@ -214,8 +212,6 @@ function displayChildren(person) {
         personLink(child.id)
     ).join(", ");
 }
-
-// Display source citations instead of source IDs
 function displayCitations(ids) {
     if (!ids || !ids.length) {
         return "No citations available.";
@@ -233,7 +229,6 @@ function displayCitations(ids) {
         : "No citations available.";
 }
 
-// Display a general value
 function displayValue(value) {
     if (value === null || value === undefined || value === "") {
         return "Unknown";
@@ -242,7 +237,6 @@ function displayValue(value) {
     return escapeHTML(value);
 }
 
-// Display a list of page IDs
 function displayIdList(ids) {
     if (!ids || !ids.length) {
         return "None";
