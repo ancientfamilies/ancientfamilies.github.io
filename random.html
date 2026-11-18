@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ancient Families - Random</title>
+</head>
+<body>
+
+<p id="status">Finding someone to explore...</p>
+
+<script>
+async function findRandomPerson() {
+    try {
+        const response = await fetch('/family.json');
+
+        if (!response.ok) {
+            throw new Error('Could not load family.json');
+        }
+
+        const family = await response.json();
+
+        // Find the highest ID
+        const highestId = Math.max(
+            ...family.map(person => Number(person.id))
+        );
+
+        // Generate a random ID between 1 and the highest ID
+        const randomId = Math.floor(Math.random() * highestId) + 1;
+
+        // Redirect to the individual
+        window.location.href = '/person?id=' + randomId;
+
+    } catch (error) {
+        document.getElementById('status').textContent =
+            'Unable to load the family database. Please try again later.';
+        console.error(error);
+    }
+}
+
+findRandomPerson();
+</script>
+
+</body>
+</html>
